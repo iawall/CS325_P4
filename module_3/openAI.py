@@ -12,6 +12,7 @@ dataDir = os.path.dirname(os.path.join(parentDir, "Data", "processed")) # get da
 processedDir = os.path.join(dataDir, 'processed') # gets the processed folder
 summaryDir = os.path.join(dataDir, 'summary') # gets the summary folder
 
+
 if not os.path.exists(summaryDir): # if the summary folder does not exist, create one
     os.makedirs(summaryDir)
 
@@ -42,7 +43,10 @@ def summarize_article(article, outputFile,i):
         summaryPart = summary.split(". ") # used for readability
         for part in summaryPart:
            # file.write(summary)
-           file.write(part.strip() + ".\n") # adds newline after each . or sentence
+            try:
+                file.write(part.strip() + ".\n") # adds newline after each . or sentence
+            except Exception as e:
+                print(f"Failed to write to summary file: {e}")
     return summaryFile
 
 def process_articles_from_folder(folder_path):

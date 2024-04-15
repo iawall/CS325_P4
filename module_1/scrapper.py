@@ -25,7 +25,10 @@ class Scrapper:
                 soup = BeautifulSoup(response.text, 'html.parser')
                 headline_text = [headline.text for headline in soup.find_all('h1')] # get headlines
                 paragraph_text = [paragraph.text for paragraph in soup.find_all('p')] # get paragraphs
-                scrapeData.append({'headlines': headline_text, 'paragraphs': paragraph_text}) # appends to scrapeData
+                try:
+                    scrapeData.append({'headlines': headline_text, 'paragraphs': paragraph_text}) # appends to scrapeData
+                except Exception as e:
+                    print(f"Failed to write html to file: {e}")
                 time.sleep(1)
             else:
                 print(f"Failed to retrieve the page {url}. Status code: {response.status_code}") # return url and status code problem
