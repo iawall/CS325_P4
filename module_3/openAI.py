@@ -17,7 +17,7 @@ if not os.path.exists(summaryDir): # if the summary folder does not exist, creat
     os.makedirs(summaryDir)
 
 ### CHANGE TO YOUR CREATED API KEY ###
-api_key = 'YOUR API KEY'
+api_key = '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'
 
 client = OpenAI(api_key=api_key)
 
@@ -59,10 +59,13 @@ def process_articles_from_folder(folder_path):
         file_path = os.path.join(folder_path, filename)
 
        # if os.path.isfile(file_path):
-        with open(file_path, 'r', encoding='utf-8') as file:
-            article = file.read().strip() # reads the scraped article
-        summary_file = summarize_article(article, summaryDir,i) # generates the summary of the article
-    
+        try:
+            with open(file_path, 'r', encoding='utf-8') as file:
+                article = file.read().strip() # reads the scraped article
+            summary_file = summarize_article(article, summaryDir,i) # generates the summary of the article
+        except Exception as e:
+            print(f"Failed to read the scraped article: {e}")
+
         summaries.append(summary_file) # add it to the list
     return summaries
 

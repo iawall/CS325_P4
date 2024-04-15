@@ -10,8 +10,10 @@ import sys
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)) # grabs the parent directory path of the file
 sys.path.append(parent_dir) # add to the system path
-
-from module_1.scrapper import Scrapper # imports scrapper class
+try:  
+    from module_1.scrapper import Scrapper # imports scrapper class
+except ImportError as e:
+    print(f"Failed to load modules to scrap.py: {e}")
 
 def main(urls):
 
@@ -41,7 +43,7 @@ def main(urls):
                 file.write("\n".join(data['paragraphs']) + "\n")
             except Exception as e:
                 print(f"failed to write scraped data to file: {e}")
-                
+
         print("Raw data stored in Data/raw directory.") # prints where the data is stored
 
 if __name__ == "__main__":
