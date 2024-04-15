@@ -11,8 +11,12 @@ import sys
 currentDir = os.path.dirname(os.path.abspath(__file__)) # get current directory
 parentDir = os.path.dirname(os.path.join(currentDir, os.pardir, os.pardir)) # get parent directory of the current file
 
-from module_2.scrap import main # gets scrap.py
-from module_3.openAI import main as openAImain
+# Testing import of modules
+try:
+    from module_2.scrap import main # gets scrap.py
+    from module_3.openAI import main as openAImain
+except ImportError as e:
+    print("Failed to load modules to run.py")
 
 if __name__ == "__main__":
     # Define list of URLs to scrape

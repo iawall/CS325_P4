@@ -1,6 +1,10 @@
-import os
-import requests
-from openai import OpenAIError, OpenAI # used to contact openAI
+# Testing package imports
+try:
+    import os
+    import requests
+    from openai import OpenAIError, OpenAI
+except ImportError as e:
+    print(f"Failed to import necessary modules: {e}")
 
 currentDir = os.path.dirname(os.path.abspath(__file__)) # get current directory
 parentDir = os.path.dirname(os.path.join(currentDir, os.pardir, os.pardir)) # get parent directory of the current file

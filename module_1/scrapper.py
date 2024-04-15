@@ -8,10 +8,12 @@ after it iterates through the websites, it returns the data.
 This follows Single Responsibility Principle due to this class having a single responsibility 
 which is to scrape data from the sites given. This can be modified without changing other files
 '''
-import requests
-from bs4 import BeautifulSoup
-import time
-
+try:
+    import requests
+    from bs4 import BeautifulSoup
+    import time
+except ImportError as e:
+    print(f"Failed to import necessary modules: {e}")
 class Scrapper:
 
     @staticmethod
