@@ -1,6 +1,6 @@
 # Project 4: Implemenation of Test Cases
 ## Ian Wall / Aaron Nobbe
-The objective of this project was to test for issues in the code, and write handlers to print out what goes wrong. 
+The objective of this project was to test for issues in the code, and write handlers to print out what goes wrong. These test cases makes the code more robust through their implentation in the code which exemplifies debugging and helps identify possible errors quicker.
 
 ## List of Test Cases Created
 - Import packages
