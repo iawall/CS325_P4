@@ -17,7 +17,7 @@ if not os.path.exists(summaryDir): # if the summary folder does not exist, creat
     os.makedirs(summaryDir)
 
 ### CHANGE TO YOUR CREATED API KEY ###
-api_key = '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'
+api_key = 'YOUR API KEY'
 
 client = OpenAI(api_key=api_key)
 
