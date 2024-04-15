@@ -34,10 +34,14 @@ def main(urls):
         #print("in scrap.py for loop")
         filename = os.path.join(processedDir, f"article{i}.txt") # make filename
         with open(filename, 'w', encoding="utf-8") as file: # to write
-            file.write("Headlines:\n") # writes the headlines
-            file.write("\n".join(data['headlines']) + "\n")
-            file.write("Paragraphs:\n") # writes the paragraphs
-            file.write("\n".join(data['paragraphs']) + "\n")
+            try:
+                file.write("Headlines:\n") # writes the headlines
+                file.write("\n".join(data['headlines']) + "\n")
+                file.write("Paragraphs:\n") # writes the paragraphs
+                file.write("\n".join(data['paragraphs']) + "\n")
+            except Exception as e:
+                print(f"failed to write scraped data to file: {e}")
+                
         print("Raw data stored in Data/raw directory.") # prints where the data is stored
 
 if __name__ == "__main__":
